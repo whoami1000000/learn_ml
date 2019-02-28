@@ -70,7 +70,9 @@ def main():
 
     model.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
 
-    model.fit(x_train, y_train, epochs=20, batch_size=512, validation_data=(x_test, y_test))
+    model.fit(x_train, y_train, epochs=20, batch_size=512, verbose=1, validation_split=0.1)
+
+    model.evaluate(x_test, y_test, verbose=1)
 
     print(predict(model, SPORT, word_index))
 
